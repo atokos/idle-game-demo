@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Idle Hacker</title>
+</head>
+<body>
+  <div id="app">
+    <div class="currency-container">
+      <div class="phishing-currency">
+        You have {{ format(player.passwords) }} passwords
+      </div>
+      <div class="exploits-currency">
+        You have found {{ format(player.exploits) }} exploits
+      </div>
+      <div class="botnet-currency">
+        You have ${{ format(player.money) }}
+      </div>
+    </div>
+    <div class="producers-container">
+      <div class="generators-container">
+        <div class="generator phishing-generator" v-for="gen in player.phishing">
+          <generator v-bind:generator="gen"></generator>
+        </div>
+        <add-generator-button target="phishing"/>
+      </div>
+      <div class="generators-container">
+        <div class="generator hacking-generator" v-for="gen in player.hacking">
+          <generator v-bind:generator="gen"></generator>
+        </div>
+        <add-generator-button target="hacking"/>
+      </div>
+      <div class="generators-container">
+        <div class="generator botnet-generator" v-for="gen in player.botnet">
+          <generator v-bind:generator="gen"></generator>
+        </div>
+        <add-generator-button target="botnet"/>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="js/vue.js"></script>
+
+<script src="js/generator.js"></script>
+
+<script src="js/components/add-generator-button.js"></script>
+<script src="js/components/generator.js"></script>
+
+<script src="js/player.js"></script>
+<script src="js/loop.js"></script>
+<script src="js/format.js"></script>
+<script src="js/index.js"></script>
+</html>
